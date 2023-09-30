@@ -15,4 +15,5 @@ type MemoizedComponent<C extends React.ComponentType> = (
   Component: NonPrimitivesMemoized<React.ComponentPropsWithRef<C>>
 ) => JSX.Element;
 
-export { Memoized, Primitive, MemoizedComponent };
+export { Memoized, MemoizedComponent, Primitive };
+

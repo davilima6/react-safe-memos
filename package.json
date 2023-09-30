@@ -1,6 +1,6 @@
 {
   "name": "react-safe-memos",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Type-safe wrappers for React memoizations",
   "main": "dist/index.js",
   "files": [

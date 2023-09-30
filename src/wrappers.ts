@@ -1,17 +1,17 @@
 import React from "react";
 
-import type { Memoized, MemoizedComponent } from "./types";
+import type { Memoized, MemoizedComponent, Primitive } from "./types";
 
 function useCallback<T extends Function>(
   callback: T,
-  deps: React.DependencyList
+  deps: ReadonlyArray<Primitive | Memoized<any>>
 ): Memoized<T> {
   return React.useCallback(callback, deps) as Memoized<T>;
 }
 
 function useMemo<T>(
   factory: () => T,
-  deps: React.DependencyList | undefined
+  deps: ReadonlyArray<Primitive | Memoized<any>>
 ): Memoized<T> {
   return React.useMemo(factory, deps) as Memoized<T>;
 }
