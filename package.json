@@ -1,14 +1,23 @@
 {
   "name": "react-safe-memos",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Type-safe wrappers for React memoizations",
-  "main": "src/index.tsx",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "author": "Davi Lima de Medeiros",
   "license": "MIT",
+  "scripts": {
+    "build": "tsup src/",
+    "prepack": "npm run build"
+  },
   "devDependencies": {
     "@type-challenges/utils": "^0.1.1",
     "@types/react": ">16",
     "react": ">16",
+    "tsup": "^7.2.0",
     "typescript": ">=4"
   },
   "peerDependencies": {
