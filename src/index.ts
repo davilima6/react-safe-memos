@@ -1,1 +1,1 @@
-export { safeReactMemo, useSafeCallback, useSafeMemo } from "./wrappers";
+export { memo, useCallback, useMemo } from "./wrappers";

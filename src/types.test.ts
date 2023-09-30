@@ -3,10 +3,10 @@ import React from "react";
 
 import { MyMemoizedComponent } from "./example";
 import type { Memoized } from "./types";
-import { useSafeCallback, useSafeMemo } from "./wrappers";
+import { useCallback, useMemo } from "./wrappers";
 
-const memoArray = useSafeMemo(() => [1, 2, 3], []);
-const memoCallback = useSafeCallback((x: number) => x * 2, []);
+const memoArray = useMemo(() => [1, 2, 3], []);
+const memoCallback = useCallback((x: number) => x * 2, []);
 
 type cases = [
   Expect<Equal<typeof memoArray, Memoized<number[]>>>,

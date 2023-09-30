@@ -2,14 +2,14 @@ import React from "react";
 
 import type { Memoized, MemoizedComponent } from "./types";
 
-function useSafeCallback<T extends Function>(
+function useCallback<T extends Function>(
   callback: T,
   deps: React.DependencyList
 ): Memoized<T> {
   return React.useCallback(callback, deps) as Memoized<T>;
 }
 
-function useSafeMemo<T>(
+function useMemo<T>(
   factory: () => T,
   deps: React.DependencyList | undefined
 ): Memoized<T> {
@@ -17,7 +17,7 @@ function useSafeMemo<T>(
 }
 
 // TODO: implement React.memo's type overload (NamedExoticComponent and MemoExoticComponent)
-function safeReactMemo<T extends React.ComponentType<any>>(
+function memo<T extends React.ComponentType<any>>(
   Component: T,
   propsAreEqual?: (
     prevProps: Readonly<React.ComponentProps<T>>,
@@ -30,4 +30,4 @@ function safeReactMemo<T extends React.ComponentType<any>>(
   ) as unknown as MemoizedComponent<T>;
 }
 
-export { safeReactMemo, useSafeCallback, useSafeMemo };
+export { memo, useCallback, useMemo };
