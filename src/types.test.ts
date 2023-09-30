@@ -18,6 +18,7 @@ type cases = [
         prop1: string;
         prop2: Memoized<number[]>;
         prop3: Memoized<(x: number) => number>;
+        prop4: Memoized<React.CSSProperties>;
       }
     >
   >
