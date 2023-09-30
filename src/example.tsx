@@ -1,6 +1,6 @@
 import React from "react";
 
-import { safeReactMemo, safeUseCallback, safeUseMemo } from "./saferMemos";
+import { safeReactMemo, useSafeCallback, useSafeMemo } from "./wrappers";
 
 type ExampleProps = {
   prop1: string;
@@ -16,8 +16,8 @@ function App(): JSX.Element {
 
 function Page(props: ExampleProps): JSX.Element {
   const { prop1, prop2: unsafeArr, prop3: unsafeCallback } = props;
-  const safeArr = safeUseMemo(() => unsafeArr, [unsafeArr]);
-  const safeCallback = safeUseCallback(unsafeCallback, [unsafeCallback]);
+  const safeArr = useSafeMemo(() => unsafeArr, [unsafeArr]);
+  const safeCallback = useSafeCallback(unsafeCallback, [unsafeCallback]);
   return (
     <>
       <MyComponent prop1={prop1} prop2={unsafeArr} prop3={unsafeCallback} />

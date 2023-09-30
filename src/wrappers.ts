@@ -1,24 +1,15 @@
-import React, { JSX } from "react";
+import React from "react";
 
-import type { Memoized, Primitive } from "./helpers";
+import type { Memoized, MemoizedComponent } from "./types";
 
-// TODO: avoid nested wrapping of already memoized values
-type NonPrimitivesMemoized<P> = {
-  [K in keyof P]: P[K] extends Primitive ? P[K] : Memoized<P[K]>;
-};
-
-type MemoizedComponent<C extends React.ComponentType> = (
-  Component: NonPrimitivesMemoized<React.ComponentPropsWithRef<C>>
-) => JSX.Element;
-
-function safeUseCallback<T extends Function>(
+function useSafeCallback<T extends Function>(
   callback: T,
   deps: React.DependencyList
 ): Memoized<T> {
   return React.useCallback(callback, deps) as Memoized<T>;
 }
 
-function safeUseMemo<T>(
+function useSafeMemo<T>(
   factory: () => T,
   deps: React.DependencyList | undefined
 ): Memoized<T> {
@@ -39,4 +30,4 @@ function safeReactMemo<T extends React.ComponentType<any>>(
   ) as unknown as MemoizedComponent<T>;
 }
 
-export { safeReactMemo, safeUseCallback, safeUseMemo };
+export { safeReactMemo, useSafeCallback, useSafeMemo };
